@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPGU-Drs.Kiran & Pallavi Patel Global University(KPGU)Vadodara</title>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">  <!-- Use Django's static file handling -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <style>
+        /* {% comment %} Set the background and layout for the whole page {% endcomment %} */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+       nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav img {
+            width: 200px;
+            height: auto;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navigation a:hover {
+            color: dodgerblue;
+        }
+
+        
+        .hero {
+            background-color: lightblue;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: transform 0.3s;
+        }
+
+        .buttons a.learn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .buttons a.visit {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .buttons a:hover {
+            transform: scale(1.1);
+        }
+        /* {% comment %} archivment0 {% endcomment %} */
+
+        .container-1 .archivment {
+            background: white;  
+            padding: 10px;  
+            border-radius: 15px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+        
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            color: black;
+        }
+
+        .achievement {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .achievement-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .achievement-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .achievement-value {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .educational-institutes {
+            color: green;
+        }
+
+        .programs-available {
+            color: red;
+        }
+
+        .glorious-history {
+            color: goldenrod;
+        }
+
+        .students-graduated {
+            color: blue;
+        }
+        /* {% comment %} <!-- footer --> {% endcomment %} */
+        footer{
+            padding: 8vw;
+            background-color: #101c32;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            }
+            
+            footer .footer-col{
+            padding-bottom: 40px;
+            }
+            
+            footer h3 {
+            color: rgb(241, 240, 245);
+            font-weight: 600;
+            padding-bottom: 20px;
+            }
+            
+            footer li{
+            list-style: none;
+            color: #7b838a;
+            padding: 10px 0;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            }
+            
+            footer li:hover {
+            color: rgb(241, 240, 245);
+            }
+            
+            footer p{
+            color: #7b838a;
+            }
+            
+            footer .subscribe{
+            margin-top: 20px;
+            }
+            
+            footer input{
+            width: 220px;
+            padding: 15px 12px;
+            background: #334f6c;
+            border: none;
+            outline: none;
+            color: #fff;
+            }
+            
+            footer .subscribe a{
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 15px;
+            background-color: #fff;
+            font-weight: 600;
+            }
+            
+            footer .subscribe a.yellow{
+            color: #2c2c2c;
+            background: #fdc93b;
+            transition: 0.3s ease;
+            }
+            
+            footer .subscribe a.yellow:hover {
+            color: rgb(21, 21, 100);
+            background:#fff;
+            }
+            
+            footer .copyright {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            }
+            
+            footer .copyright p {
+            color: #fff;
+            }
+            
+            footer .copyright .pro-links{
+            margin-top: 0px;
+            }
+            
+            footer .copyright .pro-links i {
+            background-color: #5f7185;
+            color: #fff;
+            }
+            
+            footer .copyright .pro-links i:hover {
+            background-color: #fdc93b;
+            color: #2c2c2c;
+            }
+           
+            
+            @media (max-width: 769px) {
+            }
+            
+            @media (max-width: 475px) {
+            }
+            @media (max-width: 769px) {
+                footer {
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+            }
+            
+            
+    </style>
+</head>
+
+<body>
+
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <center><h4 style="color: firebrick;">{{ message }}</h4></center>
+            {% else %}
+                <center><h4 style="color: dodgerblue;">{{ message }}</h4></center>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <nav>
+        <img src="{% static 'img/download.png' %}" alt="University Image">
+        
+        <div class="navigation">
+            <ul>
+            
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'academic' %}">Academic</a></li>
+                <li><a href="{% url 'facilities' %}">Facilities</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'festival' %}">Festival & Event</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+   
+    <div class="hero" >
+        <h1>Empowering Tomorrow's Pioneers</h1>
+        <p>Join KPGU's Pathway For Global Academic Excellence</p>
+        <div class="buttons">
+            <a href="{% url 'facilities' %}" class="visit">Visit Facilities</a>
+        </div>
+    </div>
+
+
+        
+        <div class="container-1">
+            <div class="archivment">
+                <div class="header">University Achievements and Milestones</div>
+                <div class="achievements">
+                    <div class="achievement">
+                        <div class="achievement-icon educational-institutes">&#127963;</div>
+                        <div class="achievement-value">10+</div>
+                        <div class="achievement-text">Educational Institutes</div>
+                    </div>
+                    <div class="achievement">
+                        <div class="achievement-icon programs-available">&#127891;</div>
+                        <div class="achievement-value">60+</div>
+                        <div class="achievement-text">Programs Available</div>
+                    </div>
+                    <div class="achievement">
+                        <div class="achievement-icon glorious-history">&#127942;</div>
+                        <div class="achievement-value">21+</div>
+                        <div class="achievement-text">Years of Glorious History</div>
+                    </div>
+                    <div class="achievement">
+                        <div class="achievement-icon students-graduated">&#127895;</div>
+                        <div class="achievement-value">13,000+</div>
+                        <div class="achievement-text">Total Students Graduated</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+ 
+<!-- footer -->
+    <footer>
+            <div class="footer-col">
+                <h3>KPGU Details</h3>
+                <li>Open in maps</li>
+                <li>Toll Free: 1800 843 9999</li>
+                <li>Mobile 1: 7861805306</li>
+                <li>Mobile 2: 8238046519</li>
+                <li>Email: info@kpgu.edu.in</li>
+            </div>
+            <div class="footer-col">
+                <h3>KPGU</h3>
+                <li>Academic programs</li>
+                <li>Campus facilites</li>
+                <li>Career Opportunities</li>
+            </div>
+            <div class="footer-col">
+                <h3>KPGU Committee</h3>
+                <li>Equal opportunity cell</li>
+                <li>Grievance Redressal Committee</li>
+                <li>Internal Complanint Committee</li>
+                <li> Anti Ragging Committee</li>
+            </div>
+
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>You can trust us.Think Global...Choose Global...</p>
+                <div class="subscribe">
+                    <input type="text" placeholder="Your Email address">
+                    <a href="#" class="yellow">SUBSCRIBE</a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>Copyright  2025 KPGU. All rights reserved.</p>
+                    <div class="pro-links">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+            </div>
+        </footer>
+
+    <script>
+      
+    </script>
+
+</body>
+</html>

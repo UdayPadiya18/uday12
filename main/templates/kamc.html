@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSET - Krishna School of Emerging Technology</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        h4, h3 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav img {
+            width: 200px;
+            height: auto;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navigation a:hover {
+            color: dodgerblue;
+        }
+
+        .school-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .school-text {
+            flex: 1 1 60%;
+        }
+
+        .school-text h2 {
+            color: #0033cc;
+            margin-bottom: 10px;
+        }
+
+        .school-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .school-image {
+            flex: 1 1 35%;
+        }
+
+        .school-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .message-section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+        }
+
+        .message-section p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .departments {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+        }
+
+        .departments p {
+            font-size: 20px;
+            color: #800000;
+            line-height: 1.6;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+
+        footer {
+            padding: 8vw;
+            background-color: #101c32;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            color: #7b838a;
+        }
+
+        footer h3 {
+            color: rgb(241, 240, 245);
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        footer li {
+            list-style: none;
+            padding: 10px 0;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        footer li:hover {
+            color: rgb(241, 240, 245);
+        }
+
+        footer .subscribe {
+            margin-top: 20px;
+        }
+
+        footer input {
+            width: 220px;
+            padding: 15px 12px;
+            background: #334f6c;
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+
+        footer .subscribe a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 15px;
+            background-color: #fff;
+            font-weight: 600;
+        }
+
+        footer .subscribe a.yellow {
+            color: #2c2c2c;
+            background: #fdc93b;
+            transition: 0.3s ease;
+        }
+
+        footer .subscribe a.yellow:hover {
+            color: rgb(21, 21, 100);
+            background: #fff;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            color: #fff;
+        }
+
+        .pro-links i {
+            background-color: #5f7185;
+            color: #fff;
+            margin: 0 5px;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .pro-links i:hover {
+            background-color: #fdc93b;
+            color: #2c2c2c;
+        }
+
+        @media (max-width: 769px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+
+    <nav>
+        <img src="{% static 'img/download.png' %}" alt="University Logo">
+        <div class="navigation">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'academic' %}">Academic</a></li>
+                <li><a href="{% url 'facilities' %}">Facilities</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'festival' %}">Festival & Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h4 style="font-size:35px;">Welcome To Krishna Ayurved Medical College [KAMC]</h4>
+
+<div class="school-section">
+    <div class="school-text">
+        <h2>Krishna Ayurved Medical College [KAMC]</h2>
+        <p><strong>Dr. Malhari K. Sirdeshpande</strong></p>
+        <p>Director</p>
+        <p>Krishna Ayurved Medical College [KAMC]</p>
+    </div>
+    <div class="school-image">
+        <img src="{% static 'img/kamc.jpg' %}" alt="KAMC Image">
+    </div>
+</div>
+<h3 style="font-size:35px;">Message from Director</h3>
+
+<div class="message-section">
+<p>
+    Krishna Ayurved Medical College established in the year of 2019, is a world class educational institute developed for top quality teaching and training in the field of Ayurved with the vision of the founder President Hon. Jagdishbhai Patel.
+</p>
+
+<p>
+    This institute is one of the renouned colleges, managed by Shree Krishna educational and charitable trust, Vadodara.Krishna Ayurved Medical College & Davalba Ayurved Medical Hospital are well equipped with all teaching and training facilities for students. Academic excellence is our Moto and to achieve this, highly qualified teaching staff is working hard to carve out the future of the students.
+</p>
+
+<p>
+    Apart from the academic activities, sports facilities, developed campus, world class infra structure in a nature friendly environment provide all opportunities of complete personality developments of students. Library having more than 8000 books, medicinal plant garden, Teaching Pharmacy, Teaching aids such as projectors, E- Library are some of the tools for high quality teaching and learning process.
+</p>
+
+<p>
+    The clinical exposure is equally important for medical students. Davalba Ayurved Medical Hospital is an ideal example of social service with academic facility for students. We render completely free of cost treatment for patients helping particularly the less privileged section from rural area of Varnama and other villages in vicinity. Students can easily get the practical clinical experiences from the well developed OPDS having up to 300 patients per day & 60 beded IPD of Matoshri Davalba Ayurved Medical Hospital. Full flagged Panchakarma unit, fully functional Operation Theater, Physiotherapy section, Advanced Pathology lab, X-ray unit and quality medicines make the hospital a unique Ayurved Treatment center with all modern facilities.
+</p>
+<p>
+    We are well prepared to welcome our third academic batch in coming days. Over & above the norms of CCIM & Gujarat Ayurved University, the KAMC team is committed for shaping & polishing of our students nurturing them into the shining diamonds to offer the best medical services to the society, using the ancient treasure of Ayurved with modern scientific outlook.
+</p>
+</div>
+
+
+<h4 style="font-size:35px;">Department</h4>
+
+<div class="departments">
+<p>BAMS</p>
+
+</div>
+
+<footer>
+        <div class="footer-col">
+            <h3>KPGU Details</h3>
+            <li>Open in maps</li>
+            <li>Toll Free: 1800 843 9999</li>
+            <li>Mobile 1: 7861805306</li>
+            <li>Mobile 2: 8238046519</li>
+            <li>Email: info@kpgu.edu.in</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU</h3>
+            <li>Academic programs</li>
+            <li>Campus facilities</li>
+            <li>Career Opportunities</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU Committee</h3>
+            <li>Equal opportunity cell</li>
+            <li>Grievance Redressal Committee</li>
+            <li>Internal Complaint Committee</li>
+            <li>Anti Ragging Committee</li>
+        </div>
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. Think Global... Choose Global...</p>
+            <div class="subscribe">
+                <input type="text" placeholder="Your Email address">
+                <a href="#" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 KPGU. All rights reserved.</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

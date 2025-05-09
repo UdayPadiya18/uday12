@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Kiran & Pallavi Global University</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav img {
+            width: 200px;
+            height: auto;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navigation a:hover {
+            color: dodgerblue;
+        }
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            width: 80%;
+            margin: 10rem auto 0 auto;
+        }
+        .section img {
+            height: 400px;
+            border-radius: 20px; 
+            margin-right: 30px; 
+        }
+        .text {
+            color: rgb(11, 10, 10);
+        }
+        .text h1 {
+            font-size: 35px;
+            color: darkblue;
+        }
+        ul {
+            font-size: 25px;
+            line-height: 30px;
+            list-style-type: disc; /* This adds the bullet point */
+            margin-left: 20px;
+        }
+        
+        .curved-box {
+            border-radius: 20px;
+            border: 2px solid #ddd; /* Border color */
+            padding: 30px;
+            background-color: #f9f9f9; /* Light background color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+            margin: 2rem auto;
+            width: 80%;
+        }
+        .curved-box h1, .curved-box h2 {
+            text-align: center;
+            color: darkblue;
+        }
+        .curved-box h2 {
+            font-size: 35px;
+        }
+
+        footer {
+            padding: 8vw;
+            background-color: #101c32;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            color: #7b838a;
+        }
+
+        footer h3 {
+            color: rgb(241, 240, 245);
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        footer li {
+            list-style: none;
+            padding: 10px 0;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        footer li:hover {
+            color: rgb(241, 240, 245);
+        }
+
+        footer .subscribe {
+            margin-top: 20px;
+        }
+
+        footer input {
+            width: 220px;
+            padding: 15px 12px;
+            background: #334f6c;
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+
+        footer .subscribe a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 15px;
+            background-color: #fff;
+            font-weight: 600;
+        }
+
+        footer .subscribe a.yellow {
+            color: #2c2c2c;
+            background: #fdc93b;
+            transition: 0.3s ease;
+        }
+
+        footer .subscribe a.yellow:hover {
+            color: rgb(21, 21, 100);
+            background: #fff;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            color: #fff;
+        }
+
+        .pro-links i {
+            background-color: #5f7185;
+            color: #fff;
+            margin: 0 5px;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .pro-links i:hover {
+            background-color: #fdc93b;
+            color: #2c2c2c;
+        }
+
+        @media (max-width: 769px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <center><h4 style="color: firebrick;">{{ message }}</h4></center>
+            {% else %}
+                <center><h4 style="color: dodgerblue;">{{ message }}</h4></center>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+     <nav>
+        <img src="{% static 'img/download.png' %}" alt="University Image">
+        <div class="navigation">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'academic' %}">Academic</a></li>
+                <li><a href="{% url 'facilities' %}">Facilities</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'festival' %}">Festival & Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+  
+    <div class="curved-box">
+        <h1>Welcome To Kiran & Pallavi Global University</h1>
+        <div class="section">
+            <img src="{% static 'img/about.jpg' %}" alt="KPGU Image">
+            <div class="text">
+                <h1>About KPGU...</h1>
+                <p>Established as Private University in 2021 under the provisions of:</p>
+                <p>Gujarat Private Universities Act, 2009 and Gujarat Private Universities (Amendment) Act, 2021 (Gujarat Act 15 of 2021)</p>
+                <p>Notification of Education Department, Government of Gujarat</p>
+                <p>Drs. Kiran & Pallavi Patel Global University (KPGU) Vadodara, (formerly BITS Edu Campus) offers quality education in Engineering and Technology, Health-Care, Science, Commerce and Management, and Nursing.</p>
+            </div>
+        </div>
+
+        <ul>
+            <li>KPGU aims to become a "University of Global Eminence," aligned with its vision to serve higher education, healthcare, and humanity with relentless pursuit of progress. The university’s transformation from an affiliating institution into a self-governing university marks a key milestone in its journey toward this goal. This success is possible due to dedicated efforts of the entire "Team Bits Edu Campus," under the guidance of Shree Krishna Educational & Charitable Trust.</li>
+            <li>By adhering to the KPGU Vision-2040, KPGU has positioned itself as a "Gateway to Global Excellence," to explore opportunities that will elevate performance to new levels. This growth reflects the university’s mission of globalizing knowledge through creation, acquisition, preservation, and exchange, and fostering a collaborative environment that nurtures innovative, compassionate, and socially responsible global citizens.</li>
+            <li>KPGU is dedicated to achieving multifaceted excellence across academics, research, collaboration, outreach activities, skill development, and employability initiatives. These efforts ensure the continual progress of all stakeholders and reinforce KPGU's commitment to shaping individuals with scientific temper, empathy, courage, and creativity, contributing meaningfully to society.</li>
+            <li>With this transformational framework, KPGU is prepared to achieve national and international recognition, advancing the cause of higher education, healthcare, and service to mankind, while remaining ever-focused on new horizons and continual growth.</li>
+            <li>The vision of our esteemed Founder President, Shree Jagdishbhai D. Patel, to establish KPGU Vadodara as Gujarat's first foreign university campus is swiftly becoming a reality. Guided by global standards and benchmarks, this initiative is designed to secure a bright future for our students. This landmark achievement aligns with the provisions of the New Education Policy (NEP-2020).</li>
+            <li>Globally acclaimed University from the USA is associating with KPGU, Vadodara as Gujarat Campus through efforts and patronage of Dr. Kiran C. Patel, a proponent of Indo-American initiatives from Florida, USA.</li>
+            <li>KPGU has increased infrastructure to about 18 lakhs Sq.ft. and focused on Skill, Interdisciplinary, Industry driven curriculum with global appeal, collaborative research, social inclusiveness w.r.t. National Development Goals through its qualified faculty.</li>
+        </ul>
+
+     
+        <h2>KPGU at a Glance...</h2>
+        <ul>
+            <li>Implemented Comprehensive Research Policy to motivate faculty and students to conduct research, that led to complete 101 Research Projects amounting to ₹ 32 Lakhs from AICTE & GUJCOST and 4.50 Crores from SSIP and SOIC.</li>
+            <li>Grant sanctioned from Govt. Agencies: 3 Cr from Startup India- Govt. of India and 2 Cr from GKS under SSIP, Govt. of Gujarat in 2022.</li>
+            <li>Created academic eco-system for learning and research, including instruments (GC, FTIR, HPLC), facilities (FAB LAB, High Voltage Lab, PLC, CAD/CAM, MATLAP, PSIM, PRO-E), Botanical Garden and Animal House.</li>
+            <li>Published scientific papers (168) in SCI Journals, granted 6 industrial design and awarded 4 patents out of 45 under examination and 20 more patents under prosecution.</li>
+            <li>Established Institute Innovation Council (IIC) under MOEs Innovation Cell (Govt. of India) and recipient of 3.5 star ranking and listed among the top ten universities for IPR and Startup activities in 2022-2023.</li>
+            <li>Identified among top performing incubators under Startup India Seed fund scheme, Govt. of India since 2022.</li>
+            <li>Recognized as Nodal Institute under Assistance to StartUp Gujarat Cell of Industry Commissionerate, Govt. of Gujarat, (2021 onwards).</li>
+            <li>Registered Section 8 Company named "Krishna Edu Foundation" - KEF under company Act 2013 and provided end to end support to innovators and startups through Seed Funding, Co-Working Spaces, Mentoring, and Networking.</li>
+            <li>Selected as Implementing Agency (Group 2) under MeitY Startup Hub-GENESIS scheme in 2024.</li>
+            <li>10000+ Students Outreached and Sensitized for innovation in 2020-2024.</li>
+            <li>150+ innovations supported financially in 2020-2024.</li>
+            <li>2200+ Startup Applications Received for incubation since 2022.</li>
+            <li>36 Startups supported financially since 2021.</li>
+            <li>55+ Startups incubated since 2021.</li>
+            <li>75+ Mentors on board since 2020.</li>
+            <li>Revenue of ₹19.61 Crore Generated by Startups since 2022.</li>
+            <li>150+ jobs created by Startups since 2022.</li>
+            <li>Startups appreciated at prestigious expos & events at G20 Finance Minister's and Central Bank Governors (FCBD) meeting, India Med Tech Expo, Startup Mahakumbh, Vibrant Gujarat Startup Conclave, Ministry of Ayush Pavillion at World Food India during 2023-2024.</li>
+            <li>Identified Centre for Entrepreneurship, Technology Incubation & Business Acceleration (CETIBA)-District Training Centre by SPIPA.</li>
+            <li>Entered into MOU (100+) with Government Agencies, Industries, and Industrial Associations.</li>
+            <li>Fostered active international collaborations with Carleton Global Academy-Carleton University, Canada, University of North Alabama (UNA), USA, Catholic University of Murcia (UCAM), Spain and North Southern Eastern University (NSU), Florida for academic exchange programs.</li>
+            <li>Provisions for the Freeships & scholarships for deserving, meritorious and economically weak students.</li>
+            <li>Library and Information Centre (built-up area of 20000 Sq. Ft.), accommodating 1000 students, consists of 59314 book resources, e-Resources, journals, periodicals of ₹2 Crores.</li>
+            <li>E-Library equipped with automated Library Management System (LMS) with RFID (Radio Frequency Identification System) Technology with SOUL2.0 (Software made by INFLIBNET) Centre and E-Journals form UGC Under DELNET available to foster multidisciplinary learning.</li>
+            <li>Computer centre is equipped with 165 Computers connected thorough dedicated leased Wi-Fi Internet.</li>
+            <li>Provisions for ICT enabled Smart Class rooms, internet and campus Wi-Fi, CCTV surveillance system, 100 mbps internet connectivity, Gymnasium, Transport facility, Auditorium, Sports ground, Student Community Learning Club, Shopping Complex, Banks & ATM, etc. available.</li>
+            <li>Existence of Student cells such as Anti-ragging Cell, Anti-Sexual harassment Cell, Anti-discrimination cell, Career and Placement Cell and Community Learning Club, etc.</li>
+            <li>Students demonstrated performance in examination and secured Gold Medals and results consistently remained in the range of 70 to 90% for UG programs and 90 to 100% for PG in PG programs.</li>
+            <li>Training, Career Counseling and Placements (TNP) cell recorded 80% students placement.</li>
+            <li>Students secured more than 40 Recognition Awards under leadership, distinguished services, outstanding achievements, NSS, blood donation, Thalassemia drive, best student award, sports, etc.</li>
+            <li>Both Boys and Girls hostel with all modern amenities, including AC facilities. Hygienic, modern mess available.</li>
+            <li>Recognized Krishna School of Science with Certificate of Excellence from MakeIntern (E-Cell of IIT Kharagpur) and Identified as Zonal Training Center in the region.</li>
+            <li>Implemented NEP - 2020 and KPGU registered on the ABC (Academic Bank of Credits) portal.</li>
+        </ul>
+    </div> 
+
+    <footer>
+        <div class="footer-col">
+            <h3>KPGU Details</h3>
+            <li>Open in maps</li>
+            <li>Toll Free: 1800 843 9999</li>
+            <li>Mobile 1: 7861805306</li>
+            <li>Mobile 2: 8238046519</li>
+            <li>Email: info@kpgu.edu.in</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU</h3>
+            <li>Academic programs</li>
+            <li>Campus facilities</li>
+            <li>Career Opportunities</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU Committee</h3>
+            <li>Equal opportunity cell</li>
+            <li>Grievance Redressal Committee</li>
+            <li>Internal Complaint Committee</li>
+            <li>Anti Ragging Committee</li>
+        </div>
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. Think Global... Choose Global...</p>
+            <div class="subscribe">
+                <input type="text" placeholder="Your Email address">
+                <a href="#" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 KPGU. All rights reserved.</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

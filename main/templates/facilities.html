@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Kiran & Pallavi Global University</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav img {
+            width: 200px;
+            height: auto;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navigation a:hover {
+            color: dodgerblue;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #f4f4f4;
+            padding: 16px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-top: 70px;
+            margin-bottom: 16px;
+            color: #0a3c90;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            margin-bottom: 6px;
+            color: #0a3c90;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background-color: #dce3f4;
+        }
+
+        .content {
+            margin-left: 240px;
+            padding: 24px;
+            width: calc(100% - 260px);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            color: #0a3c90;
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+
+        .section img {
+            max-width: 97%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section p {
+            text-align: justify;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            width: 160vh;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        footer {
+            padding: 8vw;
+            margin-left: 12vw;
+            background-color: #101c32;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            color: #7b838a;
+        }
+
+        footer h3 {
+            color: rgb(241, 240, 245);
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        footer li {
+            list-style: none;
+            padding: 10px 0;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        footer li:hover {
+            color: rgb(241, 240, 245);
+        }
+
+        footer .subscribe {
+            margin-top: 20px;
+        }
+
+        footer input {
+            width: 220px;
+            padding: 15px 12px;
+            background: #334f6c;
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+
+        footer .subscribe a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 15px;
+            background-color: #fff;
+            font-weight: 600;
+        }
+
+        footer .subscribe a.yellow {
+            color: #2c2c2c;
+            background: #fdc93b;
+            transition: 0.3s ease;
+        }
+
+        footer .subscribe a.yellow:hover {
+            color: rgb(21, 21, 100);
+            background: #fff;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            color: #fff;
+        }
+
+        .pro-links i {
+            background-color: #5f7185;
+            color: #fff;
+            margin: 0 5px;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .pro-links i:hover {
+            background-color: #fdc93b;
+            color: #2c2c2c;
+        }
+
+        @media (max-width: 769px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+
+    
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            document.querySelectorAll('.sidebar a').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = [...document.querySelectorAll('.sidebar a')]
+                .find(link => link.onclick.toString().includes(sectionId));
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        window.onload = function() {
+            showSection('modern-departments');
+        };
+    </script>
+</head>
+<body>
+    
+    <nav>
+        <img src="{% static 'img/download.png' %}" alt="University Image">
+        <div class="navigation">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'academic' %}">Academic</a></li>
+                <li><a href="{% url 'facilities' %}">Facilities</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'festival' %}">Festival & Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <a href="#" onclick="showSection('modern-departments')">Modern Departments and Laboratories</a>
+        <a href="#" onclick="showSection('smart-classroom')">Smart Classroom</a>
+        <a href="#" onclick="showSection('central-library')">Central Library</a>
+        <a href="#" onclick="showSection('workshop')">Workshop</a>
+        <a href="#" onclick="showSection('animal-house')">Animal House</a>
+        <a href="#" onclick="showSection('hospital')">Matrusri Davalba Ayurved Hospital</a>
+        <a href="#" onclick="showSection('student-portal')">Student Digital-Portal</a>
+        <a href="#" onclick="showSection('auditorium')">Auditorium</a>
+        <a href="#" onclick="showSection('cafeteria')">Cafeteria</a>
+        <a href="#" onclick="showSection('hostels')">Hostels</a>
+        <a href="#" onclick="showSection('transport')">Transport Facility</a>
+        <a href="#" onclick="showSection('banking')">Banking Facility</a>
+    </div>
+
+    <div class="content">
+       
+
+        <div id="modern-departments" class="section active">
+            <h2>Modern Departments and Laboratories</h2>
+            <img src="{% static 'facilities/laboratory1.jpg' %}" alt="Modern Departments and Laboratories">
+            <p>KPGU, Vadodara offers cutting-edge facilities in the departments and laboratories for students to secure there future. in the short span, each department has specialized labs designed to meet the unique needs of various fields of study, from engineering and sciences to healthcare and technology. These spaces provide students with hands-on experience, enabling them to apply theoretical knowledge in practical scenarios. With modern instruments and facilities, the university make students industry-ready through quality education so as to mach with the pace of rapid technology advances. Laboratories are equipped with modern instruments (GC, HPLC, FTIR, X-Ray Machine) and ultra modern facilities (PLC / CAD-CAM / MATLAB / FABLABS / High Voltage Lab / PSIM / PRO-E). Separate computer labs (10) with provision of ~200 Desktop computers are establish to conduct practicals in computer related subjects</p>
+        </div>
+
+        <div id="smart-classroom" class="section">
+            <h2>Smart Classroom</h2>
+            <img src="{% static 'facilities/smart.jpg' %}" alt="Smart Classroom">
+            <p>KPGU has state-of-the classrooms designed to enhance the learning experience with modern technology and well ventilated with natural light and adequate electrical facility. Each room is equipped with advanced projectors creating an interactive atmosphere for both instructors and students. The spacious layout and ergonomically designed seating chairs, teaching aids ensure a conducive environment for focus. Each classroom provide an ideal seating for lectures, presentations, and group discussions, fostering innovation and knowledge sharing in a dynamic academic environ. Entire campus has dedicated internet leased line of 100 Mbps connected to all terminals. Students and faculty are free to access internet. This help students to prepare academic assignments for events. the access speed enables students and staff to download and upload files at a faster rate.</p>
+        </div>
+
+        <div id="central-library" class="section">
+            <h2>Central Library</h2>
+            <img src="{% static 'facilities/library.jpg' %}" alt="Library">
+            <p>Central Library plays pivotal role for knowledge and learning.Central Library offers a vast collection of academic resources with provision for ~60,000 books, E-Journals form DELNET, E-Library, Print Journals, CDs, and essential peripherals to accommodate ~500 students. Library portal on website provides links for learning recourses (24x7) to students and faculty members. The 500 Chairs placed in the Library is outcome of smallest detailing worked out in selecting ergonomic chairs for the students. Also the whole Library Management System is made fully automated where in the students uses RFID (Radio Frequency Identification System) for various functioning like book search, issue and return. We are the first in the State to launch this RFID System for various modules of Campus Management. Besides, few constituent schools (KAMC, KSPR) has separate library unites as per norms. library provides a comfortable seating areas and private study rooms for learning purposes.</p>
+        </div>
+
+        <div id="workshop" class="section">
+            <h2>Workshop</h2>
+            <img src="{% static 'facilities/workshop.jpg' %}" alt="Workshop">
+            <p>The state-of-the-art Workshop facility spread over 17500 Sq.ft. with two roofs spanning across the entire area supported on the hings. The workshop houses smithy, carpentry, fitting, and tool shops. The workshop possesses CNC engraving machine, CNC turning center with eight-station turret, simulation software, fully operational foundry, CAD-CAM, facility besides other advanced gadgets, lathes and mechanical process machines. The workshop facilities provides hands-on practical experiences to the students and enables to apply theoretical concepts in real world scenario. The workshop serves as a dynamic area where students form different engineering branches can perform practicals as per curriculum and develop skill-set. the workshop activities are supervise by experienced instructors.</p>
+        </div>
+
+        <div id="animal-house" class="section">
+            <h2>Animal House</h2>
+            <img src="{% static 'facilities/animal.jpg' %}" alt="Animal-house">
+            <p>Animal house facility at Krishna School of Pharmacy & Research (KSP) consist of a specialized environment designed to house and care for mice and rats, primarily for research, breeding, and educational purposes. These facilities are equipped with controlled conditions that regulate temperature, humidity, and light to ensure the well-being and comfort of the mice and rats. Strict protocols for hygiene, feeding, and veterinary care are maintained to promote animal health and minimize stress. Ethical standards governed by institutional ethical committee guidelines, ensure that animals are treated carefully. Protocols in an animal house facility are established to ensure the health, safety, and ethical treatment of the animals, while also maintaining the integrity of the research. In addition to providing a safe habitat, animal house facilities play a crucial role in advancing scientific research in campus.</p>
+        </div> 
+
+        <div id="hospital" class="section">
+            <h2>Matrusri Davalba Ayurved Hospital</h2>
+            <img src="{% static 'facilities/hospital.jpg' %}" alt="Hospital">
+            <p>Matrusri Davalba Ayurved Hospital (MDAH) is attached to Krishna Ayurved Medical College (KAMC) and operational since 2015. MADH is 60 bed hospital having seven OPDs equipped with modern infrastructure and competent Consultants from various specialties in Ayurveda. MDAH caters the healthcare services to patients from neighboring 12 villages, students, and KPGU staff. MADH offers Medical Care through Ayurvedic Systems of Medicine to the suffering humanity, particularly in the rural areas of Vadodara. MDAH practices the balance between Classical Ayurvedic concepts and Modern Medical advancements by utilizing modern diagnostic equipment (ECG machine with software, X-ray machine, cell counter, Ambulance, etc.) for early as well as accurate diagnosis (autoanalyzer) for managing diseases by Ayurvedic medicines. The treatments comprehensively integrate Yog and Physiotherapy into the Ayurvedic Panchakarma regimen. Medical officers, nursing staff, and support staff are taking care of the entire hospital. Operation theater with all amanitas is available for surgical procedures. MDAH offers vast clinical exposure to the students of KAMC pursuing studies in BAMS. Patients are given medicines, stay, and food in IPD at no cost, but charge minimal costs of all investigations and therapies.</p>
+        </div>
+
+        <div id="student-portal" class="section">
+            <h2>Student Digital-Portal</h2>
+            <img src="{% static 'facilities/portal.jpg' %}" alt="Student-Portal">
+            <p>KPGU utilizes a cloud-based ERP system to simplify and automate many tasks, making university operations smoother and more efficient. This system handles everything from fee management, admissions, and payroll to curriculum, exam management, placements, and classroom training. Advanced technology ensures that all university activities run seamlessly, integrating with the rules and processes of various councils. The ERP system creates a digital campus, making it easier for students, staff, and systems to interact. It personalizes the learning experience for students and shifts the university’s focus to being more system-oriented, ensuring tasks and follow-ups are handled automatically.</p>
+        </div>
+
+        <div id="auditorium" class="section">
+            <h2>Auditorium</h2>
+            <img src="{% static 'facilities/audi.jpg' %}" alt="Auditorium">
+            <p>Krishna Edu Campus has state-of-the-art auditorium with capacity to accommodate 200 and 180 students, receptively on a gradient floor and range raised stage. both auditorium are complete with LCD projector, large screen, multi-media and audio system, wifi internet connectivity. The auditorium has made provision for echo-free acoustic and variable light illumination system with comfortable cushion-chair arrangement for audience. The auditorium perfect place for various academic and cultural events.</p>
+        </div>
+
+        <div id="cafeteria" class="section">
+            <h2>Cafeteria</h2>
+            <img src="{% static 'facilities/cafe.jpg' %}" alt="Cafeteria">
+            <p>Krishna Edu campus offers sufficient space (5000 Sq.ft.) where 500 students can dine at same time that enables students and staff to have lunch and breakfast. Separate hall (accommodate ~50) available on first floor of Cafeteria to dine. The menu is prepared with fresh ingredients and caters to diverse tastes. All health-oriented measures are practiced to provide variety of snacks and full meal to the students. Cafeteria is perfect spot to recharge ATP during the busy schedule. Besides, food stalls like Tea Post, Mr. Puff, etc. are available on campus. Overall Cafeteria area is well suited to have a peaceful munch.</p>
+        </div>
+
+        <div id="hostels" class="section">
+            <h2>Hostels</h2>
+            <img src="{% static 'facilities/hostel.jpg' %}" alt="Hostels">
+            <p>Krishna Edu campus has adequately ventilated and maintained separate residential hostels to accommodate both boys (150) and girls (450). Hostel offers fully furnished AC/NON-AC (2/3 beds) rooms having attached bath and balcony. Hostels possesses common dining hall as well as audio visual lounge. Both hostels has a secured living space monitored with round-the-clock security supported with CCTV Surveillance System, Fire Protection (Fire extinguishers, Water Mist Fire extinguishers) and friendly warden staff both hostels are designed to provide comfort and privacy, with modern amenities such as Wi-Fi internet connectivity, study areas, elevator, standby electrical power-backup generator and common lounges for relaxation. Both hostels are located within close proximity to the campus facilities, including the cafeteria and recreational areas, ensuring convenience for all residents. both hostels has mess with modern cooking gadgets for hygienic and nutritive food. Ban-Merry system is used to serve warm food on the dining table.</p>
+        </div>
+
+        <div id="transport" class="section">
+            <h2>Transport Facility</h2>
+            <img src="{% static 'facilities/bus.jpg' %}" alt="Transport">
+            <p>Krishna Edu campus offers a comprehensive transport facility to ensure that students have a smooth and convenient commute to and fro from Vadodara. The transportation system is featuring a fleet of well-maintained buses that operate on regular routes connecting the university with key pick-up points across the city. Students benefit from a streamlined process: upon payment of annual fees, they receive a receipt, which can later be exchanged for a bus pass card, granting them access to the transport services. This system not only facilitates efficient and reliable travel but also promotes safety and punctuality. The robust transport options provided by the university underscores its dedication to enhance student experience and accessibility.</p>
+        </div>
+
+        <div id="banking" class="section">
+            <h2>Banking Facility</h2>
+            <img src="{% static 'facilities/bank.jpg' %}" alt="Banking">
+            <p>A fully operational branch of Canara Bank is conveniently located within the campus premises, providing a comprehensive range of banking services for students, faculty, and staff. The branch offers services such as account management, deposits, withdrawals, loan assistance, and digital banking support, ensuring that all financial needs are met without the need to leave the campus. With an on-site ATM available 24/7, students can easily access their funds at any time. The presence of Canara Bank within the campus ensures hassle-free banking, making it easier for students to focus on their academics and campus life.</p>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-col">
+            <h3>KPGU Details</h3>
+            <li>Open in maps</li>
+            <li>Toll Free: 1800 843 9999</li>
+            <li>Mobile 1: 7861805306</li>
+            <li>Mobile 2: 8238046519</li>
+            <li>Email: info@kpgu.edu.in</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU</h3>
+            <li>Academic programs</li>
+            <li>Campus facilities</li>
+            <li>Career Opportunities</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU Committee</h3>
+            <li>Equal opportunity cell</li>
+            <li>Grievance Redressal Committee</li>
+            <li>Internal Complaint Committee</li>
+            <li>Anti Ragging Committee</li>
+        </div>
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. Think Global... Choose Global...</p>
+            <div class="subscribe">
+                <input type="text" placeholder="Your Email address">
+                <a href="#" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 KPGU. All rights reserved.</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.0">
+    <title>Welcome to Faculty of Engineering & Technology</title>
+    <style>
+        body {
+            margin: ;
+        }
+        .section{
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            width: 60%;
+            margin: 10rem auto 0 auto;
+        }
+        .section img{
+            height: 250px;
+        }
+       
+        
+        .section p{
+            color:rgb(11, 10, 10);
+            margin-right: 15px;
+        }
+        
+    </style>
+</head>
+<body >
+    
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <center><h4 style="color: firebrick;">{{ message }}</h4></center>
+            {% else %}
+                <center><h4 style="color: dodgerblue;">{{ message }}</h4></center>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    
+    <h1 style="text-align: center; color: black;">Welcome to Faculty of Humanities & Policy Studies</h1>
+   
+<h4 style="font-size:35px;color: darkblue">Welcome To Krishna School of Arts And Humanities [KSAH]</h4>
+
+
+
+
+<h4 style="font-size:35px;color: darkblue">Department</h4>
+<p style="font-size:25px; line-height:20px; color:#800000">Department of B.A. [Honours]</p>
+
+
+
+
+</body>
+</html>

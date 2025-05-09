@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSET - Krishna School of Emerging Technology</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        h4, h3 {
+            text-align: center;
+            color: darkblue;
+        }
+
+        nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav img {
+            width: 200px;
+            height: auto;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navigation a:hover {
+            color: dodgerblue;
+        }
+
+        .school-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .school-text {
+            flex: 1 1 60%;
+        }
+
+        .school-text h2 {
+            color: #0033cc;
+            margin-bottom: 10px;
+        }
+
+        .school-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .school-image {
+            flex: 1 1 35%;
+        }
+
+        .school-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .message-section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+        }
+
+        .message-section p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .departments {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+        }
+
+        .departments p {
+            font-size: 20px;
+            color: #800000;
+            line-height: 1.6;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+
+        footer {
+            padding: 8vw;
+            background-color: #101c32;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            color: #7b838a;
+        }
+
+        footer h3 {
+            color: rgb(241, 240, 245);
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        footer li {
+            list-style: none;
+            padding: 10px 0;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        footer li:hover {
+            color: rgb(241, 240, 245);
+        }
+
+        footer .subscribe {
+            margin-top: 20px;
+        }
+
+        footer input {
+            width: 220px;
+            padding: 15px 12px;
+            background: #334f6c;
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+
+        footer .subscribe a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 15px;
+            background-color: #fff;
+            font-weight: 600;
+        }
+
+        footer .subscribe a.yellow {
+            color: #2c2c2c;
+            background: #fdc93b;
+            transition: 0.3s ease;
+        }
+
+        footer .subscribe a.yellow:hover {
+            color: rgb(21, 21, 100);
+            background: #fff;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            color: #fff;
+        }
+
+        .pro-links i {
+            background-color: #5f7185;
+            color: #fff;
+            margin: 0 5px;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .pro-links i:hover {
+            background-color: #fdc93b;
+            color: #2c2c2c;
+        }
+
+        @media (max-width: 769px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="{% static 'img/download.png' %}" alt="University Logo">
+        <div class="navigation">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'academic' %}">Academic</a></li>
+                <li><a href="{% url 'facilities' %}">Facilities</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'festival' %}">Festival & Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h4 style="font-size:35px;">Welcome To Krishna School of Emerging Technology & Applied Research (KSET)</h4>
+
+    <div class="school-section">
+        <div class="school-text">
+            <h2>Krishna School of Emerging Technology & Applied Research (KSET)</h2>
+            <p><strong>Dr. Nandini M. Chaudhari</strong></p>
+            <p>Director</p>
+            <p>Krishna School of Emerging Technology & Applied Research [KSET]</p>
+        </div>
+        <div class="school-image">
+            <img src="{% static 'img/kset.jpg' %}" alt="KSET Image">
+        </div>
+    </div>
+
+    <h3 style="font-size:35px;">Message from Director</h3>
+
+    <div class="message-section">
+        <p>Dear Students, Faculty, and Esteemed Colleagues,</p>
+
+        <p>Welcome to Krishna School of Emerging Technology and Applied Research (KSET), a constituent institute of Drs. Kiran and Pallavi Patel Global University, Vadodara, Gujarat, INDIA, where the pursuit of knowledge and the passion for innovation converge to shape the future. As the Director of this esteemed institution, it is both an honor and a privilege to extend a warm greeting to all members of our vibrant academic community.</p>
+
+        <p>Our institute stands at the forefront of engineering education, driven by a commitment to excellence and a dedication to nurturing the next generation of leaders and innovators. We believe that engineering is not merely a field of study, but a gateway to transforming ideas into reality and solving the complex challenges of our world.</p>
+
+        <p>At KSET, we offer more than just a curriculum; we provide an environment that fosters creativity, critical thinking, and collaboration. Our world-class faculty, state-of-the-art facilities, and robust industry connections ensure that our students receive a comprehensive education that prepares them for the dynamic demands of the engineering profession.</p>
+
+        <p>We emphasize a holistic approach to learning, combining rigorous academic instruction with hands-on experience and real-world applications. Our strong industry ties and research initiatives provide our students with unparalleled opportunities to engage in groundbreaking projects and make meaningful contributions to their fields of interest. Our institute’s values are grounded in integrity, innovation, and excellence, and we strive to uphold these principles in all that we do.</p>
+
+        <p>As we move forward, our focus remains on continuously evolving our programs and resources to stay ahead of emerging trends and technologies. We are excited about the future and the endless possibilities that lie ahead for our students, faculty, and the engineering profession as a whole.</p>
+
+        <p>Thank you for being a part of the KSET family. Together, let us embark on this journey of discovery, learning, and growth, and make a positive impact on the world.</p>
+
+        <p>With best regards,</p>
+        <p>Director</p>
+    </div>
+
+    <h4 style="font-size:35px;">Department</h4>
+
+    <div class="departments">
+        <p>Department of Computer Science & Engineering</p>
+        <p>Department of Information Technology</p>
+        <p>Department of Mechanical Engineering</p>
+        <p>Department of Civil Engineering</p>
+    </div>
+
+    <footer>
+        <div class="footer-col">
+            <h3>KPGU Details</h3>
+            <li>Open in maps</li>
+            <li>Toll Free: 1800 843 9999</li>
+            <li>Mobile 1: 7861805306</li>
+            <li>Mobile 2: 8238046519</li>
+            <li>Email: info@kpgu.edu.in</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU</h3>
+            <li>Academic programs</li>
+            <li>Campus facilities</li>
+            <li>Career Opportunities</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU Committee</h3>
+            <li>Equal opportunity cell</li>
+            <li>Grievance Redressal Committee</li>
+            <li>Internal Complaint Committee</li>
+            <li>Anti Ragging Committee</li>
+        </div>
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. Think Global... Choose Global...</p>
+            <div class="subscribe">
+                <input type="text" placeholder="Your Email address">
+                <a href="#" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 KPGU. All rights reserved.</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

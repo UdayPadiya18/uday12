@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Festival Gallery</title>
+
+ <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        nav {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav img {
+            width: 200px;
+            height: auto;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navigation a:hover {
+            color: dodgerblue;
+        }
+
+        .container {
+            max-width: 1224px;
+            width: 90%;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .title {
+            margin-bottom: 2rem;
+            
+        }
+
+        .photo-gallery {
+            display: flex;
+            gap: 40px;
+        }
+
+        .colunm {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .photo img {
+            width: 130%; 
+            height: 130%; 
+            border-radius: 5px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        @media(max-width: 768px) {
+            .photo-gallery {
+                flex-direction: column;
+            }
+        }
+
+        footer {
+            margin-top:30px;
+            padding: 8vw;
+            background-color: #101c32;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            color: #7b838a;
+        }
+
+        footer h3 {
+            color: rgb(241, 240, 245);
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        footer li {
+            list-style: none;
+            padding: 10px 0;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        footer li:hover {
+            color: rgb(241, 240, 245);
+        }
+
+        footer .subscribe {
+            margin-top: 20px;
+        }
+
+        footer input {
+            width: 220px;
+            padding: 15px 12px;
+            background: #334f6c;
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+
+        footer .subscribe a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 12px 15px;
+            background-color: #fff;
+            font-weight: 600;
+        }
+
+        footer .subscribe a.yellow {
+            color: #2c2c2c;
+            background: #fdc93b;
+            transition: 0.3s ease;
+        }
+
+        footer .subscribe a.yellow:hover {
+            color: rgb(21, 21, 100);
+            background: #fff;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            color: #fff;
+        }
+
+        .pro-links i {
+            background-color: #5f7185;
+            color: #fff;
+            margin: 0 5px;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .pro-links i:hover {
+            background-color: #fdc93b;
+            color: #2c2c2c;
+        }
+
+        @media (max-width: 769px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <center><h4 style="color: firebrick;">{{ message }}</h4></center>
+            {% else %}
+                <center><h4 style="color: dodgerblue;">{{ message }}</h4></center>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <nav>
+        <img src="{% static 'img/download.png' %}" alt="University Image">
+        <div class="navigation">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'academic' %}">Academic</a></li>
+                <li><a href="{% url 'facilities' %}">Facilities</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'festival' %}">Festival & Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <h1 style="text-align: center; color: black;">Welcome to Festival Gallery</h1>
+
+    <div class="container">
+        <h2 class="title">Photo Gallery</h2>
+
+        <div class="photo-gallery">
+
+            <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/1.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/1.jpg' %}" alt="">
+                    </a>
+                    
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/2.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/2.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/3.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/3.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/4.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/4.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/5.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/5.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/6.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/6.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/7.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/7.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/8.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/8.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/9.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/9.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/10.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/10.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/11.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/11.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/12.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/12.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/13.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/13.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/14.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/14.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/15.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/15.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+             <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/16.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/16.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/17.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/17.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/18.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/18.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+             <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/19.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/19.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/20.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/20.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/21.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/21.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+             <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/22.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/22.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/23.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/23.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/24.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/24.jpg' %}" alt="">
+                    </a>
+                </div>
+            </div>
+
+             <div class="colunm">
+                <div class="photo">
+                    <a href="{% static 'festival/25.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/25.jpg' %}" alt="">
+                    </a>
+                </div>
+                <div class="photo">
+                    <a href="{% static 'festival/26.jpg' %}" target="_blank">
+                        <img src="{% static 'festival/26.jpg' %}" alt="">
+                    </a>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-col">
+            <h3>KPGU Details</h3>
+            <li>Open in maps</li>
+            <li>Toll Free: 1800 843 9999</li>
+            <li>Mobile 1: 7861805306</li>
+            <li>Mobile 2: 8238046519</li>
+            <li>Email: info@kpgu.edu.in</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU</h3>
+            <li>Academic programs</li>
+            <li>Campus facilities</li>
+            <li>Career Opportunities</li>
+        </div>
+        <div class="footer-col">
+            <h3>KPGU Committee</h3>
+            <li>Equal opportunity cell</li>
+            <li>Grievance Redressal Committee</li>
+            <li>Internal Complaint Committee</li>
+            <li>Anti Ragging Committee</li>
+        </div>
+        <div class="footer-col">
+            <h3>Newsletter</h3>
+            <p>You can trust us. Think Global... Choose Global...</p>
+            <div class="subscribe">
+                <input type="text" placeholder="Your Email address">
+                <a href="#" class="yellow">SUBSCRIBE</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 KPGU. All rights reserved.</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
